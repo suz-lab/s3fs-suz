@@ -1809,7 +1809,6 @@ static int rename_object(const char *from, const char *to) {
 
 static int clone_directory_object(const char *from, const char *to) {
   int result;
-  mode_t mode;
   headers_t meta;
 
   string from_with_slash = string(from) + "/";
