@@ -293,10 +293,10 @@ string calc_signature(
   StringToSign += content_type + "\n";
   StringToSign += date + "\n";
   int count = 0;
-  if (headers != 0) {
+  if(headers != 0) {
     do {
       //###cout << headers->data << endl;
-      if (strncmp(headers->data, "x-amz", 5) == 0) {
+      if(strncmp(headers->data, "x-amz", 5) == 0) {
         ++count;
         StringToSign += headers->data;
         StringToSign += 10; // linefeed
@@ -3514,6 +3514,7 @@ static int my_fuse_opt_proc(void *data, const char *arg, int key, struct fuse_ar
         exit(EXIT_FAILURE);
       }
     }
+    closedir(dp);
   }
 
   if (key == FUSE_OPT_KEY_OPT) {
