@@ -19,4 +19,3 @@ S3FS-C should be working fine with S3 storage. However, There are couple of limi
 
 * There is no full UID/GID support. Owner and group are all "root". chown operation is a no-op. 
 * File and directory's permissions are hard-coded to be "rwxrwxrwx". chmode operation is a no-op. If you want to secure the S3 bucket, set the owners and permissions of the mount point appropriately.
-test
