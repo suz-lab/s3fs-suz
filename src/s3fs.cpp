@@ -295,7 +295,6 @@ string calc_signature(
   int count = 0;
   if(headers != 0) {
     do {
-      //###cout << headers->data << endl;
       if(strncmp(headers->data, "x-amz", 5) == 0) {
         ++count;
         StringToSign += headers->data;
@@ -3646,6 +3645,7 @@ static int my_fuse_opt_proc(void *data, const char *arg, int key, struct fuse_ar
 
 int main(int argc, char *argv[]) {
   int ch;
+  int fuse_res;
   int option_index = 0; 
 
   static const struct option long_opts[] = {
@@ -3825,5 +3825,8 @@ int main(int argc, char *argv[]) {
   s3fs_oper.create = s3fs_create;
 
   // now passing things off to fuse, fuse will finish evaluating the command line args
-  return fuse_main(custom_args.argc, custom_args.argv, &s3fs_oper, NULL);
+  fuse_res = fuse_main(custom_args.argc, custom_args.argv, &s3fs_oper, NULL);
+  fuse_opt_free_args(&custom_args);
+
+  return fuse_res;
 }
